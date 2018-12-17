@@ -2,6 +2,9 @@ const mongoose = require("mongoose");
 const crypto = require('crypto');
 const Schema = mongoose.Schema;
 
+/**
+ * Andmebaasimudel kasutaja andmete hoidmiseks
+ */
 let UserSchema = new Schema(
     {
         email: {type: String, unique: true},

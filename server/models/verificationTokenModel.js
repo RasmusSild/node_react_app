@@ -1,6 +1,9 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+/**
+ * Andmebaasimudel kasutajakonto kinnitustokeni hoidmiseks
+ */
 const TokenSchema = new Schema(
     {
         _userId: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'User' },

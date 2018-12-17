@@ -6,6 +6,12 @@ const UserLoginModel = require("../models/userLoginModel");
 const i18n = require('i18n');
 require('dotenv').config();
 
+/**
+ * Kasutaja sisse logimine.
+ * Kontrollib, kas kasutajakonto eksisteerib, kas parool on õige ja kas konto on kinnitatud.
+ * Kasutaja sisselogimiste tabelit täiendab andmebaasis uue kirjega.
+ * Geneerib ja tagastab JWT Tokeni, mille alusel toimub edasiste päringute valideerimine.
+ */
 router.post('/login', (req, res, next) => {
     i18n.setLocale(req.cookies.lang);
     passport.authenticate('local', {session: false}, (err, user) => {

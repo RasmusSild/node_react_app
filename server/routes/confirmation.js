@@ -4,6 +4,11 @@ const router  = express.Router();
 const UserModel = require("../models/userModel");
 const VerificationToken = require("../models/verificationTokenModel");
 
+/**
+ * Kasutajakonto kinnitamine.
+ * Serveerib html lehe, mis annab kasutajale aimu konto kinnitamise, kasutaja olemasolu või ka tokeni aegumise kohta.
+ * Parameetriteks kinnitustoken ja rakenduse keel teate tõlkimise jaoks.
+ */
 router.get("/confirmation/:lang/:token", (req, res) => {
     i18n.setLocale(req.params.lang);
     VerificationToken.findOne({ token: req.params.token }, (err, token) => {

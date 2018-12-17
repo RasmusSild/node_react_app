@@ -20,6 +20,10 @@ const mailerHbsOptions = {
 };
 require('dotenv').config();
 
+/**
+ * Tagastab kasutajate nimekirja.
+ * Päring valideeritakse JWT Tokeniga.
+ */
 router.get("/usersList", (req, res) => {
     i18n.setLocale(req.cookies.lang);
     passport.authenticate('jwt', {session: false}, (err, success) => {
@@ -40,6 +44,10 @@ router.get("/usersList", (req, res) => {
     })(req, res);
 });
 
+/**
+ * Tagastab kasutaja sisselogimiste nimekirja id järgi.
+ * Päring valideeritakse JWT Tokeniga.
+ */
 router.get("/userLogins/:id", (req, res) => {
     passport.authenticate('jwt', {session: false}, (err, success) => {
         if (err) {
@@ -59,6 +67,11 @@ router.get("/userLogins/:id", (req, res) => {
     })(req, res);
 });
 
+/**
+ * Registreerib kasutaja. Valideerib emaili ja parooli
+ * Parooli salvestab andmebaasi hashina.
+ * Kasutaja kinnitamiseks genereeritakse token, mis saadetakse emailile.
+ */
 router.post("/signUp", (req, res) => {
     i18n.setLocale(req.cookies.lang);
     const { email, password } = req.body;
@@ -125,6 +138,10 @@ router.post("/signUp", (req, res) => {
     });
 });
 
+/**
+ * Genereerib kasutajale uue parooli ja salvestab andmebaasi uue hashi.
+ * Saadab uue parooli kasutaja emailile.
+ */
 router.post("/resetPassword", (req, res) => {
     const { email } = req.body;
     const isValidEmail = emailValidator.validate(email);
@@ -168,6 +185,11 @@ router.post("/resetPassword", (req, res) => {
 
 });
 
+/**
+ * Kustutab kasutaja id järgi.
+ * Päring valideeritakse JWT Tokeniga.
+ * Saadab emaili kustutamise kinnitusega.
+ */
 router.delete("/deleteUser/:id", (req, res) => {
     i18n.setLocale(req.cookies.lang);
     passport.authenticate('jwt', {session: false}, (err, success) => {
