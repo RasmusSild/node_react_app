@@ -3,7 +3,7 @@
 Projekti jaoks on vaja installida Node.js oma arvutisse, sobib uusim LTS versioon.
 Projekti käivitamiseks on vaja kõigepealt installida vajalikud npm paketid. 
 Selle jaoks käivitada käsk "npm install" projekti juurkataloogis ning ka kaustades
-client ja server. Kui seejärel käivitada käsk "npm start" projekti juurkataloogis, siis
+client ja server. Server kausta peaks paigutama ka .env faili, seal sees on kasutusel olevad API keyd ja muud tähtsad asjad. Kui nüüd seejärel käivitada käsk "npm start" projekti juurkataloogis, siis
 peaksid frontend ja backend rakendused minema tööle samaaegselt. React rakendus peaks avama 
 ennast ise automaatselt brauseris, kui on algse laadimise lõpetanud.
 
